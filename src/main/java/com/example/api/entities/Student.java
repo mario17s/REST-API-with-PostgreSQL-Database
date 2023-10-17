@@ -25,6 +25,9 @@ public class Student {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "password")
+    private String password;
+
     @OneToMany(mappedBy = "student")
     Set<Registration> registrations = new HashSet<>();
 
@@ -38,12 +41,13 @@ public class Student {
         registrations.remove(r);
     }
 
-    public Student(String firstName, String lastName, int age, LocalDate dob, String email) {
+    public Student(String firstName, String lastName, int age, LocalDate dob, String email, String ps) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.dob = dob;
         this.email = email;
+        this.password = ps;
     }
 
     public Student(){}
@@ -94,6 +98,14 @@ public class Student {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Set<Registration> gtRegistrations() {
